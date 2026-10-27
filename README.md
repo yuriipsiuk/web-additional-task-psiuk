@@ -1,24 +1,7 @@
-# Basic HTTP Server (Socket API)
-
-Простий та легкий HTTP-сервер, написаний мовою C++ з використанням виключно системної бібліотеки сокетів (`Winsock2` / POSIX Sockets) без залучення сторонніх веб-фреймворків чи високорівневих HTTP-бібліотек.
-
-## 🚀 Функціонал
-
-- **Обробка Socket API:** Створення, прив'язка (`bind`), прослуховування (`listen`) та прийняття з'єднань (`accept`).
-- **Кастомний парсер HTTP-запитів:** Ручний аналіз рядків для витягування HTTP-методу, URI, query-параметрів, заголовків та тіла (body).
-- **GET-запити:** 
-  - Динамічна обробка query-параметрів (наприклад, `/page?id=777`).
-  - Віддача статичних HTML/CSS файлів.
-- **POST-запити:**
-  - Перевірка заголовка `Content-Type: application/json`.
-  - Зчитування тіла запиту та повернення JSON-відповіді.
-
----
-
-## 🛠️ Запуск та компіляція
-
-### Windows (MinGW / Code::Blocks)
-При компіляції обов'язково підключіть системну бібліотеку `ws2_32`:
-```bash
-g++ main.cpp -o server -lws2_32
-./server
+Basic HTTP Server (Socket API)
+1. Get запит з параметрами
+   curl "http://localhost:8080/page?id=777"
+2. Get запит без параметрів
+   curl "http://localhost:8080/page"
+3. POST-запит
+   curl -X POST http://localhost:8080/ -H "Content-Type: application/json" -d "{\"score\": 4, \"name\": "yurii"}"
